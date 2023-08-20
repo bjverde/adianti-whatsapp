@@ -15,10 +15,17 @@ Custo de US$39/mês [4] + Custo por mensagem conforme tabela abaixo
 ## Limites
 Os números de telefone comerciais sem o status Conectado e um nome de exibição aprovado estão limitados a 250 conversas iniciadas pela empresa no período de 24 horas. [5]
 
-
 ## Fontes
 * [1] https://developers.facebook.com/docs/whatsapp/pricing?locale=pt_BR
 * [2] https://www.mundoconectado.com.br/corporativo/whatsapp-business-api-anuncia-novos-precos-para-mensagens-em-massa/
 * [3] https://developers.facebook.com/docs/whatsapp/?locale=pt_BR
 * [4] https://ultramsg.com/pt/
 * [5] https://developers.facebook.com/docs/whatsapp/messaging-limits?locale=pt_BR
+
+
+# WhatsApp Via link
+
+* https://faq.whatsapp.com/425247423114725/?locale=pt_BR&cms_platform=iphone
+* https://canaltech.com.br/redes-sociais/crie-um-link-para-o-seu-numero-no-whatsapp/
+* https://pt.stackoverflow.com/questions/295917/quebrar-linha-em-texto-de-link-com-text
+* https://diretoaoponto-tech.com.br/a/Software/Whatsapp/quebra%20de%20linha%20whatsapp%20api
