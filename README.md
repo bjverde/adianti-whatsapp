@@ -29,3 +29,4 @@ Os números de telefone comerciais sem o status Conectado e um nome de exibiçã
 * https://canaltech.com.br/redes-sociais/crie-um-link-para-o-seu-numero-no-whatsapp/
 * https://pt.stackoverflow.com/questions/295917/quebrar-linha-em-texto-de-link-com-text
 * https://diretoaoponto-tech.com.br/a/Software/Whatsapp/quebra%20de%20linha%20whatsapp%20api
+* https://velhobit.com.br/desenvolvimento/api-do-whatsapp-como-quebrar-linhas-e-passar-parametros-em-links.html
