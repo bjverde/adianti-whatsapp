@@ -40,12 +40,12 @@ class ContatoForm extends TPage
         $frm = $this->frm;
         $frm->enableCSRFProtection(); // Protection cross-site request forgery 
         $frm->addHiddenField( self::$primaryKey );   // coluna chave da tabela
-        $frm->addTextField('NOME', 'Nome',50,true,50);
-        $frm->addTextField('DDI', 'Ddi',50,true,50);
-        $frm->addTextField('DDD', 'Ddd',50,true,50);
-        $frm->addTextField('CELULAR', 'Celular',50,true,50);
-        $frm->addTextField('ST_WHATSAPP', 'Status Whatsapp',50,false,50);
-        $frm->addTextField('AVISADO', 'Avisado',50,false,50);
+        $frm->addTextField('nome', 'Nome',50,true,50);
+        $frm->addTextField('ddi', 'Ddi',50,true,50);
+        $frm->addTextField('ddd', 'Ddd',50,true,50);
+        $frm->addTextField('celular', 'Celular',50,true,50);
+        $frm->addTextField('st_whastapp', 'Status Whatsapp',50,false,50);
+        $frm->addTextField('avisado', 'Avisado',50,false,50);
 
         // O Adianti permite a Internacionalização - A função _t('string') serve
         //para traduzir termos no sistema. Veja ApplicationTranslator escrevendo
@@ -88,6 +88,8 @@ class ContatoForm extends TPage
         try{
             $this->form->validate();
             $this->form->setData($data);
+            //Padrão FormDin 5
+            /*
             $vo = new ContatoVO();
             $this->frm->setVo( $vo ,$data ,$param );
             $controller = new ContatoController();
@@ -100,8 +102,26 @@ class ContatoForm extends TPage
             }else{
                 $this->frm->addMessage($resultado);
             }
+            */
+            TTransaction::open($this->database); // open a transaction
+
+            $messageAction = null;
+
+            $object = new Contato(); // create an empty object 
+            $data = $this->form->getData(); // get form data as array
+            $object->fromArray( (array) $data); // load the object with data
+            $object->store(); // save the object             
+            $data->id_contato = $object->id_contato; // get the generated {PRIMARY_KEY}
+
+            $this->form->setData($data); // fill form data
+            TTransaction::close(); // close the transaction
+
+            new TMessage('info', "Registro salvo", $messageAction); 
+
         }catch (Exception $e){
             new TMessage(TFormDinMessage::TYPE_ERROR, $e->getMessage());
+            $this->form->setData( $this->form->getData() ); // keep form data
+            TTransaction::rollback(); // undo all pending operations
         } //END TryCatch
     } //END onSave
 
