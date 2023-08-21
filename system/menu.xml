@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+  <menuitem label="Pessoas">
+    <icon>fas:users fa-fw </icon>
+    <menu>
+      <menuitem label="Pacientes">
+        <icon> fa-fw </icon>
+        <action>PacienteList#method=onShow</action>
+      </menuitem>
+      <menuitem label="Profissionais">
+        <icon> fa-fw </icon>
+        <action>ProfissionalList#method=onShow</action>
+      </menuitem>
+    </menu>
+  </menuitem>
+  <menuitem label="Relatórios">
+    <icon>far:file-pdf fa-fw </icon>
+    <menu>
+      <menuitem label="Consultas por profissional">
+        <icon> fa-fw </icon>
+        <action>ConsultaReport#method=onShow</action>
+      </menuitem>
+      <menuitem label="Agendamentos por profissional">
+        <icon> fa-fw </icon>
+        <action>AgendamentoReport#method=onShow</action>
+      </menuitem>
+    </menu>
+  </menuitem>
+  <menuitem label="Consultas">
+    <icon>fas:ambulance fa-fw </icon>
+    <menu>
+      <menuitem label="Gerenciar consultas">
+        <icon> fa-fw </icon>
+        <action>ConsultaList#method=onShow</action>
+      </menuitem>
+      <menuitem label="Gerenciar consultas (todas)">
+        <icon> fa-fw </icon>
+        <action>TodasConsultaList#method=onShow</action>
+      </menuitem>
+      <menuitem label="Agendamentos (todos)">
+        <icon>far:circle fa-fw </icon>
+        <action>AgendamentoTodosCalendarFormView</action>
+      </menuitem>
+      <menuitem label="Agendamentos">
+        <icon>far:circle fa-fw </icon>
+        <action>AgendamentoCalendarFormView</action>
+      </menuitem>
+      <menuitem label="Agenda">
+        <icon>far:circle fa-fw </icon>
+        <action>AgendaBuscaForm#method=onShow</action>
+      </menuitem>
+    </menu>
+  </menuitem>
+  <menuitem label="Cadastros básicos">
+    <icon>fas:archive fa-fw </icon>
+    <menu>
+      <menuitem label="Planos de saúde">
+        <icon> fa-fw </icon>
+        <action>PlanoSaudeList#method=onShow</action>
+      </menuitem>
+      <menuitem label="Sintomas">
+        <icon> fa-fw </icon>
+        <action>SintomaList#method=onShow</action>
+      </menuitem>
+      <menuitem label="Especialidades">
+        <icon> fa-fw </icon>
+        <action>EspecialidadeList#method=onShow</action>
+      </menuitem>
+      <menuitem label="Medicamentos">
+        <icon> fa-fw </icon>
+        <action>MedicamentoList#method=onShow</action>
+      </menuitem>
+      <menuitem label="Estados">
+        <icon> fa-fw </icon>
+        <action>EstadoList#method=onShow</action>
+      </menuitem>
+      <menuitem label="Cidades">
+        <icon> fa-fw </icon>
+        <action>CidadeList#method=onShow</action>
+      </menuitem>
+    </menu>
+  </menuitem>
+  <menuitem label="Gráficos">
+    <icon>far:chart-bar fa-fw </icon>
+    <menu>
+      <menuitem label="Agendamentos por profissional">
+        <icon> fa-fw </icon>
+        <action>AgendamentoChart#method=onShow</action>
+      </menuitem>
+      <menuitem label="Agendamentos por dia">
+        <icon> fa-fw </icon>
+        <action>AgendamentoDiaChartClonado#method=onShow</action>
+      </menuitem>
+      <menuitem label="Consultas por dia">
+        <icon> fa-fw </icon>
+        <action>ConsultaDiaChart#method=onShow</action>
+      </menuitem>
+      <menuitem label="Consultas por profissional">
+        <icon> fa-fw </icon>
+        <action>ConsultaChart#method=onShow</action>
+      </menuitem>
+      <menuitem label="Consultas por sintoma">
+        <icon> fa-fw </icon>
+        <action>ConsultaSintomaChart#method=onShow</action>
+      </menuitem>
+    </menu>
+  </menuitem>
+  <menuitem label="_t{Administration}">
+    <icon>fas:home fa-fw</icon>
+    <menu>
+      <menuitem label="Dashboard">
+        <icon>fas:tachometer-alt fa-fw</icon>
+        <action>SystemAdministrationDashboard</action>
+      </menuitem>
+      <menuitem label="_t{Programs}">
+        <icon>far:file-code fa-fw</icon>
+        <action>SystemProgramList</action>
+      </menuitem>
+      <menuitem label="_t{Groups}">
+        <icon>fas:users fa-fw</icon>
+        <action>SystemGroupList</action>
+      </menuitem>
+      <menuitem label="_t{Units}">
+        <icon>fas:university fa-fw</icon>
+        <action>SystemUnitList</action>
+      </menuitem>
+      <menuitem label="_t{Users}">
+        <icon>fas:user fa-fw</icon>
+        <action>SystemUserList</action>
+      </menuitem>
+      <menuitem label="_t{Database explorer}">
+        <icon>fas:database fa-fw</icon>
+        <action>SystemDatabaseExplorer</action>
+      </menuitem>
+      <menuitem label="_t{SQL Panel}">
+        <icon>fas:table fa-fw</icon>
+        <action>SystemSQLPanel</action>
+      </menuitem>
+      <menuitem label="_t{Menu editor}">
+        <icon>far:edit fa-fw</icon>
+        <action>SystemMenuEditor</action>
+      </menuitem>
+      <menuitem label="_t{Files diff}">
+        <icon>fas:file-medical-alt fa-fw</icon>
+        <action>SystemFilesDiff</action>
+      </menuitem>
+      <menuitem label="PHP Info">
+        <icon>fas:info-circle fa-fw</icon>
+        <action>SystemPHPInfoView</action>
+      </menuitem>
+      <menuitem label="System Information">
+        <icon>fas:desktop fa-fw</icon>
+        <action>SystemInformationView</action>
+      </menuitem>
+      <menuitem label="_t{Preferences}">
+        <icon>fas:cog fa-fw</icon>
+        <action>SystemPreferenceForm#method=onEdit</action>
+      </menuitem>
+    </menu>
+  </menuitem>
+  <menuitem label="_t{Documents}">
+    <icon>far:file-alt fa-fw</icon>
+    <menu>
+      <menuitem label="_t{Send document}">
+        <icon>fas:cloud-upload-alt fa-fw</icon>
+        <action>SystemDocumentUploadForm</action>
+      </menuitem>
+      <menuitem label="_t{My documents}">
+        <icon>fas:archive fa-fw</icon>
+        <action>SystemDocumentList</action>
+      </menuitem>
+      <menuitem label="_t{Shared with me}">
+        <icon>fas:share-alt fa-fw</icon>
+        <action>SystemSharedDocumentList</action>
+      </menuitem>
+      <menuitem label="_t{Categories}">
+        <icon>fas:th fa-fw</icon>
+        <action>SystemDocumentCategoryFormList</action>
+      </menuitem>
+    </menu>
+  </menuitem>
+  <menuitem label="Logs">
+    <icon>fas:desktop fa-fw</icon>
+    <menu>
+      <menuitem label="Dashboard">
+        <icon>fas:tachometer-alt fa-fw</icon>
+        <action>SystemLogDashboard</action>
+      </menuitem>
+      <menuitem label="_t{Access Log}">
+        <icon>fas:key fa-fw</icon>
+        <action>SystemAccessLogList</action>
+      </menuitem>
+      <menuitem label="_t{Change Log}">
+        <icon>fas:film fa-fw</icon>
+        <action>SystemChangeLogView</action>
+      </menuitem>
+      <menuitem label="_t{SQL Log}">
+        <icon>fas:database fa-fw</icon>
+        <action>SystemSqlLogList</action>
+      </menuitem>
+      <menuitem label="_t{Request Log}">
+        <icon>fas:globe fa-fw</icon>
+        <action>SystemRequestLogList</action>
+      </menuitem>
+      <menuitem label="_t{PHP Log}">
+        <icon>fas:exclamation-triangle fa-fw</icon>
+        <action>SystemPHPErrorLogView</action>
+      </menuitem>
+      <menuitem label="Session dump">
+        <icon>fas:code fa-fw</icon>
+        <action>SystemSessionDumpView</action>
+      </menuitem>
+    </menu>
+  </menuitem>
+  <menuitem label="Logout">
+    <icon>fas:sign-out-alt fa-fw</icon>
+    <action>LoginForm#method=onLogout#static=1</action>
+  </menuitem>
+</menu>
