@@ -14,7 +14,7 @@ class MensagemForm extends TPage
 {
 
     private static $formId ='form_mensagemForm'; //Form ID
-    private static $primaryKey ='ID_MENSAGEM';
+    private static $primaryKey ='id_mensagem';
     protected $form; //Registration form Adianti
     protected $frm;  //Registration component FormDin 5
     protected $adianti_target_container;
@@ -29,9 +29,9 @@ class MensagemForm extends TPage
     public function __construct($param = null)
     {
         parent::__construct();
-        $this->setDatabase('maindatabase'); // define the database
+        $this->setDatabase('whats_df'); // define the database
         $this->setActiveRecord('mensagem'); // define the Active Record
-        $this->setDefaultOrder('ID_MENSAGEM', 'asc'); // define the default order
+        $this->setDefaultOrder('id_mensagem', 'asc'); // define the default order
         if(!empty($param['target_container'])){
             $this->adianti_target_container = $param['target_container'];
         }
@@ -40,7 +40,7 @@ class MensagemForm extends TPage
         $frm = $this->frm;
         $frm->enableCSRFProtection(); // Protection cross-site request forgery 
         $frm->addHiddenField( self::$primaryKey );   // coluna chave da tabela
-        $frm->addTextField('MENSAGEM', 'Mensagem',50,true,50);
+        $frm->addTextField('mensagem', 'Mensagem',50,true,50);
 
         // O Adianti permite a Internacionalização - A função _t('string') serve
         //para traduzir termos no sistema. Veja ApplicationTranslator escrevendo

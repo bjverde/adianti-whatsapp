@@ -14,7 +14,7 @@ class ContatoFormList extends TPage
 {
 
     private static $formId ='form_contatoFormList'; //Form ID
-    private static $primaryKey ='ID_CONTATO';
+    private static $primaryKey ='id_contato';
     protected $form; //Registration form Adianti
     protected $frm;  //Registration component FormDin 5
     protected $filter_criteria;
@@ -31,9 +31,9 @@ class ContatoFormList extends TPage
     public function __construct($param = null)
     {
         parent::__construct();
-        $this->setDatabase('maindatabase'); // define the database
+        $this->setDatabase('whats_df'); // define the database
         $this->setActiveRecord('contato'); // define the Active Record
-        $this->setDefaultOrder('ID_CONTATO', 'asc'); // define the default order
+        $this->setDefaultOrder('id_contato', 'asc'); // define the default order
         $this->setLimit(20);
         $this->filter_criteria = new TCriteria;
         if(!empty($param['target_container'])){

@@ -31,7 +31,7 @@ class MensagemFormList extends TPage
     public function __construct($param = null)
     {
         parent::__construct();
-        $this->setDatabase('maindatabase'); // define the database
+        $this->setDatabase('whats_df'); // define the database
         $this->setActiveRecord('mensagem'); // define the Active Record
         $this->setDefaultOrder('ID_MENSAGEM', 'asc'); // define the default order
         $this->setLimit(20);

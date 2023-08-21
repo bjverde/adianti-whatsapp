@@ -29,9 +29,9 @@ class ContatoForm extends TPage
     public function __construct($param = null)
     {
         parent::__construct();
-        $this->setDatabase('maindatabase'); // define the database
+        $this->setDatabase('whats_df'); // define the database
         $this->setActiveRecord('contato'); // define the Active Record
-        $this->setDefaultOrder('ID_CONTATO', 'asc'); // define the default order
+        $this->setDefaultOrder('id_contato', 'asc'); // define the default order
         if(!empty($param['target_container'])){
             $this->adianti_target_container = $param['target_container'];
         }
