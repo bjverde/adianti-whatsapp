@@ -48,17 +48,9 @@
     <menuitem label='_t{Documents}'>
         <icon>far:file-alt fa-fw</icon>
         <menu>
-              <menuitem label='_t{Send document}'>
-                  <icon>fas:cloud-upload-alt fa-fw</icon>
-                  <action>SystemDocumentUploadForm</action>
-              </menuitem>
-              <menuitem label='_t{My documents}'>
-                  <icon>fas:archive fa-fw</icon>
-                  <action>SystemDocumentList</action>
-              </menuitem>
-              <menuitem label='_t{Shared with me}'>
-                  <icon>fas:share-alt fa-fw</icon>
-                  <action>SystemSharedDocumentList</action>
+              <menuitem label='_t{Documents}'>
+                  <icon>fas:box fa-fw</icon>
+                  <action>SystemDriveList</action>
               </menuitem>
               <menuitem label='_t{Categories}'>
                   <icon>fas:th fa-fw</icon>
