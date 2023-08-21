@@ -75,12 +75,12 @@ class ContatoFormList extends TPage
         $grid = new TFormDinGrid($this,'gd','Data Grid');
         $grid->setUpdateFields($mixUpdateFields);
         $grid->addColumn(self::$primaryKey,'id');
-        $grid->addColumn('NOME','Nome');
-        $grid->addColumn('DDI','Ddi');
-        $grid->addColumn('DDD','Ddd');
-        $grid->addColumn('CELULAR','Celular');
-        $grid->addColumn('ST_WHATSAPP','Status Whatsapp');
-        $grid->addColumn('AVISADO','Avisado');
+        $grid->addColumn('nome','Nome');
+        $grid->addColumn('ddi','Ddi');
+        $grid->addColumn('ddd','Ddd');
+        $grid->addColumn('celular','Celular');
+        $grid->addColumn('st_whatsapp','Status Whatsapp');
+        $grid->addColumn('avisado','Avisado');
 
         $this->datagrid = $grid->show();
         $this->pageNavigation = $grid->getPageNavigation();

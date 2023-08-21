@@ -40,12 +40,13 @@ class ContatoForm extends TPage
         $frm = $this->frm;
         $frm->enableCSRFProtection(); // Protection cross-site request forgery 
         $frm->addHiddenField( self::$primaryKey );   // coluna chave da tabela
-        $frm->addTextField('nome', 'Nome',50,true,50);
-        $frm->addTextField('ddi', 'Ddi',50,true,50);
-        $frm->addTextField('ddd', 'Ddd',50,true,50);
-        $frm->addTextField('celular', 'Celular',50,true,50);
-        $frm->addTextField('st_whastapp', 'Status Whatsapp',50,false,50);
-        $frm->addTextField('avisado', 'Avisado',50,false,50);
+        $frm->addTextField('nome', 'Nome',50,true,50);    
+        $frm->addTextField('ddi', 'DDI',4,true,5,'+55');
+        $frm->addNumberField('ddd', 'DDD',2,true,0,false,'61');
+        $frm->addMaskField('celular', 'Celular',true,'99999-9999',false);
+        //$frm->addTextField('celular', 'Celular',50,true,50);
+        //$frm->addTextField('st_whastapp', 'Status Whatsapp',50,false,50);
+        //$frm->addTextField('avisado', 'Avisado',50,false,50);
 
         // O Adianti permite a Internacionalização - A função _t('string') serve
         //para traduzir termos no sistema. Veja ApplicationTranslator escrevendo
