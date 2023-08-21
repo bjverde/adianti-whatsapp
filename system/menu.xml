@@ -1,4 +1,12 @@
 <menu>
+    <menuitem label='Contato'>
+        <icon>fas:tachometer-alt fa-fw</icon>
+        <action>ContatoList</action>
+    </menuitem>
+    <menuitem label='Mensagem'>
+        <icon>far:file-code fa-fw</icon>
+        <action>MensagemForm</action>
+    </menuitem>
     <menuitem label='_t{Administration}'>
         <icon>fas:home fa-fw</icon>
         <menu>
