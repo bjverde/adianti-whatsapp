@@ -33,9 +33,16 @@ class ContatoFormList extends TPage
         parent::__construct();
         $this->setDatabase('whats_df'); // define the database
         $this->setActiveRecord('contato'); // define the Active Record
-        $this->setDefaultOrder('id_contato', 'asc'); // define the default order
-        $this->setLimit(20);
+        $this->setDefaultOrder(self::$primaryKey, 'desc'); // define the default order
+        $this->setLimit(TFormDinGrid::ROWS_PER_PAGE);
+
         $this->filter_criteria = new TCriteria;
+        $this->addFilterField(self::$primaryKey, '=', self::$primaryKey); //campo, operador, campo do form
+        $this->addFilterField('nome', 'like', 'nome'); //campo, operador, campo do form
+        $this->addFilterField('ddi', '=', 'ddi'); //campo, operador, campo do form
+        $this->addFilterField('ddd', '=', 'ddd'); //campo, operador, campo do form
+        $this->addFilterField('celular', '=', 'celular'); //campo, operador, campo do form      
+          
         if(!empty($param['target_container'])){
             $this->adianti_target_container = $param['target_container'];
         }
@@ -44,7 +51,7 @@ class ContatoFormList extends TPage
         $frm = $this->frm;
         $frm->enableCSRFProtection(); // Protection cross-site request forgery 
         $frm->addHiddenField( self::$primaryKey );   // coluna chave da tabela
-        $frm->addTextField('NOME', 'Nome',50,false,50);
+        $frm->addTextField('nome', 'Nome',50,false,50);
         $frm->addTextField('ddi', 'DDI',4,false,5);
         $frm->addNumberField('ddd', 'DDD',2,false,0,false);
         $frm->addMaskField('celular', 'Celular',false,'99999-9999',false);
