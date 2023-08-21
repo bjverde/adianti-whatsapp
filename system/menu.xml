@@ -1,7 +1,7 @@
 <menu>
     <menuitem label='Contato'>
         <icon>fas:tachometer-alt fa-fw</icon>
-        <action>ContatoList</action>
+        <action>ContatoFormList</action>
     </menuitem>
     <menuitem label='Mensagem'>
         <icon>far:file-code fa-fw</icon>
