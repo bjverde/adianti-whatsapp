@@ -52,7 +52,7 @@ class ContatoForm extends TPage
         //primeiro em ingles e depois traduzindo
         $frm->setAction( _t('Save'), 'onSave', null, 'fa:save', 'green' );
         $frm->setActionLink( _t('Clear'), 'onClear', null, 'fa:eraser', 'red');
-        $frm->setActionLink( _t('Back'), ['contatoFormList','onReload'], null, 'fas:arrow-left', '#000000');
+        $frm->setActionLink( _t('Back'), ['ContatoFormList','onReload'], null, 'fas:arrow-left', '#000000');
 
         $this->form = $frm->show();
         $this->form->setData( TSession::getValue(__CLASS__.'_filter_data'));

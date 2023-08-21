@@ -56,7 +56,7 @@ class ContatoFormList extends TPage
         //primeiro em ingles e depois traduzindo
         $frm->setActionLink( _t('Search'), 'onSearch', null, 'fas:search', '#2168bd');
         $frm->setActionLink( _t('Clear'), 'onClear', null, 'fa:eraser', 'red');
-        $frm->setAction( _t('Register'), ['contatoForm','onReload'], null, 'fa:plus-square', 'green' );
+        $frm->setAction( _t('Register'), ['ContatoForm','onReload'], null, 'fa:plus-square', 'green' );
 
         $this->form = $frm->show();
         $this->form->setData( TSession::getValue(__CLASS__.'_filter_data'));
