@@ -44,12 +44,12 @@ class ContatoFormList extends TPage
         $frm = $this->frm;
         $frm->enableCSRFProtection(); // Protection cross-site request forgery 
         $frm->addHiddenField( self::$primaryKey );   // coluna chave da tabela
-        $frm->addTextField('NOME', 'Nome',50,true,50);
-        $frm->addTextField('DDI', 'Ddi',50,true,50);
-        $frm->addTextField('DDD', 'Ddd',50,true,50);
-        $frm->addTextField('CELULAR', 'Celular',50,true,50);
-        $frm->addTextField('ST_WHATSAPP', 'Status Whatsapp',50,false,50);
-        $frm->addTextField('AVISADO', 'Avisado',50,false,50);
+        $frm->addTextField('NOME', 'Nome',50,false,50);
+        $frm->addTextField('ddi', 'DDI',4,false,5);
+        $frm->addNumberField('ddd', 'DDD',2,false,0,false);
+        $frm->addMaskField('celular', 'Celular',false,'99999-9999',false);
+        //$frm->addTextField('ST_WHATSAPP', 'Status Whatsapp',50,false,50);
+        //$frm->addTextField('AVISADO', 'Avisado',50,false,50);
 
         // O Adianti permite a Internacionalização - A função _t('string') serve
         //para traduzir termos no sistema. Veja ApplicationTranslator escrevendo
@@ -61,6 +61,7 @@ class ContatoFormList extends TPage
         $this->form = $frm->show();
         $this->form->setData( TSession::getValue(__CLASS__.'_filter_data'));
 
+        /*
         $mixUpdateFields = self::$primaryKey.'|'.self::$primaryKey
                         .',NOME|NOME'
                         .',DDI|DDI'
@@ -85,16 +86,90 @@ class ContatoFormList extends TPage
         $this->datagrid = $grid->show();
         $this->pageNavigation = $grid->getPageNavigation();
         $panelGroupGrid = $grid->getPanelGroupGrid();
+        */
+
+        //-----------------------------------------------------------
+        $this->datagrid_form = new TForm('datagrid_'.self::$formId);
+        //$this->datagrid_form->onsubmit = 'return false';
+
+        // creates a Datagrid
+        $this->datagrid = new TDataGrid;
+        $this->datagrid->disableHtmlConversion();
+        $this->datagrid = new BootstrapDatagridWrapper($this->datagrid);
+        $this->datagrid->style = 'width: 100%';
+        $this->datagrid->disableDefaultClick();
+
+        $column_id_contato = new TDataGridColumn('id_contato', "Id Contato", 'center');
+        $column_nome       = new TDataGridColumn('nome', "Nome", 'center' , '70px');
+        $column_ddi        = new TDataGridColumn('ddi', "DDI", 'left');
+        $column_ddd        = new TDataGridColumn('ddd', "DDD", 'left');
+        $column_celular    = new TDataGridColumn('celular', "Celular", 'left');
+
+        //$column_id_contato->setTransformer([$this, 'formatRow'] );
+        /*
+        $column_telefonecelular->setTransformer(function($value, $object, $row){
+            return Transforme::celularWhatsApp($value, $object, $row);
+        });
+        $column_whatsapp->setTransformer(function($value, $object, $row){
+            return Transforme::celularWhatsApp($value, $object, $row);
+        });
+        $column_avisado->setTransformer(function($value, $object, $row){
+            return Transforme::simNaoComLabel($value, $object, $row);
+        });
+        $column_status_acesso ->setTransformer(function($value, $object, $row){
+            return Transforme::fonteStutsAcess($value, $object, $row);
+        });
+        */
+
+        //<onBeforeColumnsCreation>
+        //</onBeforeColumnsCreation>
+
+        $this->datagrid->addColumn($column_id_contato);
+        $this->datagrid->addColumn($column_nome);
+        $this->datagrid->addColumn($column_ddi);
+        $this->datagrid->addColumn($column_ddd);
+        $this->datagrid->addColumn($column_celular);
+
+        
+        
+        // creates the datagrid actions
+        //$action1 = new TDataGridAction([$this, 'onSelect'], ['id' => '{id}', 'register_state' => 'false']);
+        // add the actions to the datagrid
+        //$this->datagrid->addAction($action1, 'Select', 'far:square fa-fw black');
+
+        // create the datagrid model
+        $this->datagrid->createModel();
+
+        // creates the page navigation
+        $this->pageNavigation = new TPageNavigation;
+        $this->pageNavigation->enableCounters();
+        $this->pageNavigation->setAction(new TAction(array($this, 'onReload')));
+        $this->pageNavigation->setWidth($this->datagrid->getWidth());
 
 
-        // creates the page structure using a table
+        $this->datagrid_form->add($this->datagrid);
+
+        $panel = new TPanelGroup('Lista de clientes');
+        $panel->datagrid = 'datagrid-container';
+        $this->datagridPanel = $panel;
+        //$panel->addHeaderActionLink( 'Marcar Avisado', new TAction([$this, 'marcarAvisado']), 'far:check-circle' );
+        $panel->add($this->datagrid_form);
+        $panel->getBody()->class .= ' table-responsive';
+        $panel->addFooter($this->pageNavigation);
+
         $formDinBreadCrumb = new TFormDinBreadCrumb(__CLASS__);
-        $vbox = $formDinBreadCrumb->getAdiantiObj();
-        $vbox->add($this->form);
-        $vbox->add($panelGroupGrid);
+        $breadCrumb = $formDinBreadCrumb->getAdiantiObj();
 
-        // add the table inside the page
-        parent::add($vbox);
+        // vertical box container
+        $container = new TVBox;
+        $container->style = 'width: 100%';
+        $container->add($breadCrumb);
+        $container->add($this->form);
+        $container->add($panel);
+        //<onAfterPageCreation>
+        //</onAfterPageCreation>
+
+        parent::add($container);
     }
 
     //--------------------------------------------------------------------------------

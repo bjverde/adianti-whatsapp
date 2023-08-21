@@ -14,7 +14,7 @@ class ContatoForm extends TPage
 {
 
     private static $formId ='form_contatoForm'; //Form ID
-    private static $primaryKey ='ID_CONTATO';
+    private static $primaryKey ='id_contato';
     protected $form; //Registration form Adianti
     protected $frm;  //Registration component FormDin 5
     protected $adianti_target_container;
