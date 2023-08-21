@@ -102,9 +102,10 @@ app/lib/widget/TAccordion.class.php
 **/app/service/
 
 **/app/templates/theme3/
-**/app/templates/theme3_v4/
+**/app/templates/theme3_v5/
 **/app/templates/theme3-adminlte3/
 **/app/templates/theme4/
+**/app/templates/theme4_v5/
 
 **/files
 lib/**
