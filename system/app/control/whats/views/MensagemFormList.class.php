@@ -45,9 +45,6 @@ class MensagemFormList extends TPage
         $frm->enableCSRFProtection(); // Protection cross-site request forgery 
         $frm->addHiddenField( self::$primaryKey );   // coluna chave da tabela
         $frm->addTextField('MENSAGEM', 'Mensagem',50,true,50);
-        $frm->addDateField('DTINCLUSAO', 'Data Inclusão',true,null,null,null,null,'dd/mm/yyyy',null,null,null,null,'yyyy-mm-dd');
-        $frm->addDateField('DTALTERACAO', 'Data Alteração',false,null,null,null,null,'dd/mm/yyyy',null,null,null,null,'yyyy-mm-dd');
-        $frm->addDateField('DTEXCLUSAO', 'Data Exclusão',false,null,null,null,null,'dd/mm/yyyy',null,null,null,null,'yyyy-mm-dd');
 
         // O Adianti permite a Internacionalização - A função _t('string') serve
         //para traduzir termos no sistema. Veja ApplicationTranslator escrevendo
@@ -69,9 +66,6 @@ class MensagemFormList extends TPage
         $grid->setUpdateFields($mixUpdateFields);
         $grid->addColumn(self::$primaryKey,'id');
         $grid->addColumn('MENSAGEM','Mensagem');
-        $grid->addColumnFormatDate('DTINCLUSAO','Data Inclusão',null,'left','dd/mm/yyyy');
-        $grid->addColumnFormatDate('DTALTERACAO','Data Alteração',null,'left','dd/mm/yyyy');
-        $grid->addColumnFormatDate('DTEXCLUSAO','Data Exclusão',null,'left','dd/mm/yyyy');
 
         $this->datagrid = $grid->show();
         $this->pageNavigation = $grid->getPageNavigation();

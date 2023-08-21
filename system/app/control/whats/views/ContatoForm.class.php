@@ -46,9 +46,6 @@ class ContatoForm extends TPage
         $frm->addTextField('CELULAR', 'Celular',50,true,50);
         $frm->addTextField('ST_WHATSAPP', 'Status Whatsapp',50,false,50);
         $frm->addTextField('AVISADO', 'Avisado',50,false,50);
-        $frm->addDateField('DTINCLUSAO', 'Data Inclusão',true,null,null,null,null,'dd/mm/yyyy',null,null,null,null,'yyyy-mm-dd');
-        $frm->addDateField('DTALTERACAO', 'Data Alteração',false,null,null,null,null,'dd/mm/yyyy',null,null,null,null,'yyyy-mm-dd');
-        $frm->addDateField('DTEXCLUSAO', 'Data Exclusão',false,null,null,null,null,'dd/mm/yyyy',null,null,null,null,'yyyy-mm-dd');
 
         // O Adianti permite a Internacionalização - A função _t('string') serve
         //para traduzir termos no sistema. Veja ApplicationTranslator escrevendo

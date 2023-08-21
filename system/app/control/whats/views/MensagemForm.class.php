@@ -41,9 +41,6 @@ class MensagemForm extends TPage
         $frm->enableCSRFProtection(); // Protection cross-site request forgery 
         $frm->addHiddenField( self::$primaryKey );   // coluna chave da tabela
         $frm->addTextField('MENSAGEM', 'Mensagem',50,true,50);
-        $frm->addDateField('DTINCLUSAO', 'Data Inclusão',true,null,null,null,null,'dd/mm/yyyy',null,null,null,null,'yyyy-mm-dd');
-        $frm->addDateField('DTALTERACAO', 'Data Alteração',false,null,null,null,null,'dd/mm/yyyy',null,null,null,null,'yyyy-mm-dd');
-        $frm->addDateField('DTEXCLUSAO', 'Data Exclusão',false,null,null,null,null,'dd/mm/yyyy',null,null,null,null,'yyyy-mm-dd');
 
         // O Adianti permite a Internacionalização - A função _t('string') serve
         //para traduzir termos no sistema. Veja ApplicationTranslator escrevendo
