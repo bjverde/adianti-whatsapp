@@ -107,7 +107,7 @@ class ContatoFormList extends TPage
         $this->datagrid->disableDefaultClick();
 
         $column_id_contato = new TDataGridColumn('id_contato', "Id Contato", 'center');
-        $column_nome       = new TDataGridColumn('nome', "Nome", 'center' , '70px');
+        $column_nome       = new TDataGridColumn('nome', "Nome", 'left');
         $column_ddi        = new TDataGridColumn('ddi', "DDI", 'left');
         $column_ddd        = new TDataGridColumn('ddd', "DDD", 'left');
         $column_celular    = new TDataGridColumn('celular', "Celular", 'left');
@@ -137,12 +137,10 @@ class ContatoFormList extends TPage
         $this->datagrid->addColumn($column_ddd);
         $this->datagrid->addColumn($column_celular);
 
-        
-        
-        // creates the datagrid actions
-        //$action1 = new TDataGridAction([$this, 'onSelect'], ['id' => '{id}', 'register_state' => 'false']);
-        // add the actions to the datagrid
-        //$this->datagrid->addAction($action1, 'Select', 'far:square fa-fw black');
+        $action_onEdit = TFormDinGridTransformer::getDataGridActionOnEdit('ContatoForm',self::$primaryKey);
+        $this->datagrid->addAction($action_onEdit);
+        $action_onDelete = TFormDinGridTransformer::getDataGridActionOnDelete($this,self::$primaryKey);
+        $this->datagrid->addAction($action_onDelete);
 
         // create the datagrid model
         $this->datagrid->createModel();

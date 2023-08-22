@@ -117,7 +117,7 @@ class ContatoForm extends TPage
             $this->form->setData($data); // fill form data
             TTransaction::close(); // close the transaction
 
-            new TMessage('info', "Registro salvo", $messageAction); 
+            new TMessage(FormDinMessage::TYPE_INFO, "Registro salvo", $messageAction); 
 
         }catch (Exception $e){
             new TMessage(TFormDinMessage::TYPE_ERROR, $e->getMessage());
@@ -125,5 +125,23 @@ class ContatoForm extends TPage
             TTransaction::rollback(); // undo all pending operations
         } //END TryCatch
     } //END onSave
+
+    public function onEdit( $param )
+    {
+        try {
+            if (isset($param['key'])) {
+                $key = $param['key'];  // get the parameter $key
+                TTransaction::open($this->database); // open a transaction
+                $object = new Contato($key); // instantiates the Active Record 
+                $this->form->setData($object); // fill the form 
+                TTransaction::close(); // close the transaction 
+            }else{
+                $this->form->clear();
+            }
+        } catch (Exception $e) {
+            new TMessage(TFormDinMessage::TYPE_ERROR, $e->getMessage()); // shows the exception error message
+            TTransaction::rollback(); // undo all pending operations
+        }
+    }
 
 }
