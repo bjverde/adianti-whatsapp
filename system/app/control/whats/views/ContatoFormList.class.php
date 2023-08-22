@@ -112,6 +112,12 @@ class ContatoFormList extends TPage
         $column_ddd        = new TDataGridColumn('ddd', "DDD", 'left');
         $column_celular    = new TDataGridColumn('celular', "Celular", 'left');
 
+        $column_celular->setTransformer(function($value, $object, $row){
+            $numeroTelefone = $object->ddi.$object->ddd.$value;
+            $msg = 'msg fixa';
+            return TFormDinGridTransformer::linkApiWhatsApp($numeroTelefone, $object, $row, $msg, true);
+        });
+
         //$column_id_contato->setTransformer([$this, 'formatRow'] );
         /*
         $column_telefonecelular->setTransformer(function($value, $object, $row){
