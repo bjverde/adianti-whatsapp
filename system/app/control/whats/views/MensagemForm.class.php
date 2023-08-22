@@ -94,7 +94,7 @@ class MensagemForm extends TPage
             $this->form->setData($data); // fill form data
             TTransaction::close(); // close the transaction
 
-            new TMessage(FormDinMessage::TYPE_INFO, "Registro salvo", $messageAction); 
+            new TMessage(TFormDinMessage::TYPE_INFO, "Registro salvo", $messageAction); 
         }catch (Exception $e){
             new TMessage(TFormDinMessage::TYPE_ERROR, $e->getMessage());
             $this->form->setData( $this->form->getData() ); // keep form data
