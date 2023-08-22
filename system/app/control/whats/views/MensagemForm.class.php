@@ -40,7 +40,10 @@ class MensagemForm extends TPage
         $frm = $this->frm;
         $frm->enableCSRFProtection(); // Protection cross-site request forgery 
         $frm->addHiddenField( self::$primaryKey );   // coluna chave da tabela
-        $frm->addTextField('mensagem', 'Mensagem',50,true,50);
+        $html = 'Você poderá adicionar texto com UMA linha com até 1.000 caraquiteres.';
+        $html = $html.'<br>É possível incluir emojis basta copiar de colar do site <a href="https://emojipedia.org/pt">https://emojipedia.org/pt</a>';
+        $frm->addHtmlField('html1', $html, null, 'Dicas:', null, 200); 
+        $frm->addTextField('mensagem', 'Mensagem',500,true,50);
 
         // O Adianti permite a Internacionalização - A função _t('string') serve
         //para traduzir termos no sistema. Veja ApplicationTranslator escrevendo
