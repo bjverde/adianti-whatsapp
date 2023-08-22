@@ -88,7 +88,8 @@ class ContatoFormList extends TPage
 
         $column_celular->setTransformer(function($value, $object, $row){
             $numeroTelefone = $object->ddi.$object->ddd.$value;
-            $msg = 'msg fixa';
+            $objMsgPadrao = MensagemController::getMsgPadrao();
+            $msg = $objMsgPadrao->mensagem;
             return TFormDinGridTransformer::linkApiWhatsApp($numeroTelefone, $object, $row, $msg, true);
         });
 
