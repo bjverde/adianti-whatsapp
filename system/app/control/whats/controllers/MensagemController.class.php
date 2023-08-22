@@ -14,6 +14,7 @@ class MensagemController
 
 
     private $dao = null;
+    private $database = Constantes::MAIN_DATABASE;
 
     public function __construct($tpdo = null)
     {
@@ -98,6 +99,14 @@ class MensagemController
         $result = $this->dao->getVoById( $id );
         return $result;
     }
+    //--------------------------------------------------------------------------------
+    public static function getMsgPadrao()
+    {
+        TTransaction::open(self::$database); // open a transaction
+        $object = new Mensagem(1); // instantiates the Active Record            
+        TTransaction::close(); // close the transaction 
+        return $object;      
+    }    
 
 }
 ?>
