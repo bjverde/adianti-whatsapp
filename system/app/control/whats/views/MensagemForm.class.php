@@ -59,7 +59,6 @@ class MensagemForm extends TPage
         // add the table inside the page
         parent::add($vbox);
     }
-
     //--------------------------------------------------------------------------------
     /**
      * Close right panel
@@ -69,35 +68,55 @@ class MensagemForm extends TPage
     {
         TScript::create("Template.closeRightPanel()");
     } //END onClose
-     */
-
+    */
     //--------------------------------------------------------------------------------
     public function onSave($param)
     {
         $data = $this->form->getData();
         //Função do FormDin para Debug
-        FormDinHelper::d($param,'$param');
-        FormDinHelper::debug($data,'$data');
-        FormDinHelper::debug($_REQUEST,'$_REQUEST');
+        //FormDinHelper::d($param,'$param');
+        //FormDinHelper::debug($data,'$data');
+        //FormDinHelper::debug($_REQUEST,'$_REQUEST');
 
         try{
             $this->form->validate();
             $this->form->setData($data);
-            $vo = new MensagemVO();
-            $this->frm->setVo( $vo ,$data ,$param );
-            $controller = new MensagemController();
-            $resultado = $controller->save( $vo );
-            if( is_int($resultado) && $resultado!=0 ) {
-                //$text = TFormDinMessage::messageTransform($text); //Tranform Array in Msg Adianti
-                $this->onReload();
-                $this->frm->addMessage( _t('Record saved') );
-                //$this->frm->clearFields();
-            }else{
-                $this->frm->addMessage($resultado);
-            }
+
+            TTransaction::open($this->database); // open a transaction
+
+            $messageAction = null;
+
+            $object = new Mensagem(); // create an empty object 
+            $data = $this->form->getData(); // get form data as array
+            $object->fromArray( (array) $data); // load the object with data
+            $object->store(); // save the object
+
+            $this->form->setData($data); // fill form data
+            TTransaction::close(); // close the transaction
+
+            new TMessage(FormDinMessage::TYPE_INFO, "Registro salvo", $messageAction); 
         }catch (Exception $e){
             new TMessage(TFormDinMessage::TYPE_ERROR, $e->getMessage());
+            $this->form->setData( $this->form->getData() ); // keep form data
+            TTransaction::rollback(); // undo all pending operations
         } //END TryCatch
     } //END onSave
+    public function onReload($param = null)
+    {
+        $this->onShow($param);
+    }
+    //--------------------------------------------------------------------------------
+    public function onShow($param = null)
+    {
+        try {
+            TTransaction::open($this->database); // open a transaction
+            $object = new Mensagem(1); // instantiates the Active Record
+            $this->form->setData($object); // fill the form 
+            TTransaction::close(); // close the transaction 
+        } catch (Exception $e) {
+            new TMessage(TFormDinMessage::TYPE_ERROR, $e->getMessage()); // shows the exception error message
+            TTransaction::rollback(); // undo all pending operations
+        }
+    }
 
 }
