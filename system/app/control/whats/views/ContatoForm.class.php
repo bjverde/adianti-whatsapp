@@ -82,9 +82,9 @@ class ContatoForm extends TPage
     {
         $data = $this->form->getData();
         //Função do FormDin para Debug
-        FormDinHelper::d($param,'$param');
-        FormDinHelper::debug($data,'$data');
-        FormDinHelper::debug($_REQUEST,'$_REQUEST');
+        //FormDinHelper::d($param,'$param');
+        //FormDinHelper::debug($data,'$data');
+        //FormDinHelper::debug($_REQUEST,'$_REQUEST');
 
         try{
             $this->form->validate();
