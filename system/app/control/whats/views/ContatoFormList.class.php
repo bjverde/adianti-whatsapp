@@ -118,21 +118,6 @@ class ContatoFormList extends TPage
             return TFormDinGridTransformer::linkApiWhatsApp($numeroTelefone, $object, $row, $msg, true);
         });
 
-        //$column_id_contato->setTransformer([$this, 'formatRow'] );
-        /*
-        $column_telefonecelular->setTransformer(function($value, $object, $row){
-            return Transforme::celularWhatsApp($value, $object, $row);
-        });
-        $column_whatsapp->setTransformer(function($value, $object, $row){
-            return Transforme::celularWhatsApp($value, $object, $row);
-        });
-        $column_avisado->setTransformer(function($value, $object, $row){
-            return Transforme::simNaoComLabel($value, $object, $row);
-        });
-        $column_status_acesso ->setTransformer(function($value, $object, $row){
-            return Transforme::fonteStutsAcess($value, $object, $row);
-        });
-        */
 
         //<onBeforeColumnsCreation>
         //</onBeforeColumnsCreation>
