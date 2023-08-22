@@ -32,7 +32,7 @@ class ContatoFormList extends TPage
     {
         parent::__construct();
         $this->setDatabase('whats_df'); // define the database
-        $this->setActiveRecord('contato'); // define the Active Record
+        $this->setActiveRecord('Contato'); // define the Active Record
         $this->setDefaultOrder(self::$primaryKey, 'desc'); // define the default order
         $this->setLimit(TFormDinGrid::ROWS_PER_PAGE);
 

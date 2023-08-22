@@ -30,7 +30,7 @@ class MensagemForm extends TPage
     {
         parent::__construct();
         $this->setDatabase('whats_df'); // define the database
-        $this->setActiveRecord('mensagem'); // define the Active Record
+        $this->setActiveRecord('Mensagem'); // define the Active Record
         $this->setDefaultOrder('id_mensagem', 'asc'); // define the default order
         if(!empty($param['target_container'])){
             $this->adianti_target_container = $param['target_container'];

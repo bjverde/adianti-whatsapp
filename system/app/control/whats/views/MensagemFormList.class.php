@@ -32,7 +32,7 @@ class MensagemFormList extends TPage
     {
         parent::__construct();
         $this->setDatabase('whats_df'); // define the database
-        $this->setActiveRecord('mensagem'); // define the Active Record
+        $this->setActiveRecord('Mensagem'); // define the Active Record
         $this->setDefaultOrder('ID_MENSAGEM', 'asc'); // define the default order
         $this->setLimit(20);
         $this->filter_criteria = new TCriteria;
