@@ -29,7 +29,7 @@ class MensagemDAO
         //FormDinHelper::validateObjTypeTPDOConnectionObj($tpdo,__METHOD__,__LINE__);
         if( empty($tpdo) ){
             //$tpdo = New TPDOConnectionObj(); //FomDin4
-            $tpdo = New TFormDinPdoConnection('maindatabase');
+            $tpdo = New TFormDinPdoConnection(Constantes::MAIN_DATABASE);
         }
         $this->setTPDOConnection($tpdo);
     }
