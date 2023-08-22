@@ -68,32 +68,6 @@ class ContatoFormList extends TPage
         $this->form = $frm->show();
         $this->form->setData( TSession::getValue(__CLASS__.'_filter_data'));
 
-        /*
-        $mixUpdateFields = self::$primaryKey.'|'.self::$primaryKey
-                        .',NOME|NOME'
-                        .',DDI|DDI'
-                        .',DDD|DDD'
-                        .',CELULAR|CELULAR'
-                        .',ST_WHATSAPP|ST_WHATSAPP'
-                        .',AVISADO|AVISADO'
-                        .',DTINCLUSAO|DTINCLUSAO'
-                        .',DTALTERACAO|DTALTERACAO'
-                        .',DTEXCLUSAO|DTEXCLUSAO'
-                        ;
-        $grid = new TFormDinGrid($this,'gd','Data Grid');
-        $grid->setUpdateFields($mixUpdateFields);
-        $grid->addColumn(self::$primaryKey,'id');
-        $grid->addColumn('nome','Nome');
-        $grid->addColumn('ddi','Ddi');
-        $grid->addColumn('ddd','Ddd');
-        $grid->addColumn('celular','Celular');
-        $grid->addColumn('st_whatsapp','Status Whatsapp');
-        $grid->addColumn('avisado','Avisado');
-
-        $this->datagrid = $grid->show();
-        $this->pageNavigation = $grid->getPageNavigation();
-        $panelGroupGrid = $grid->getPanelGroupGrid();
-        */
 
         //-----------------------------------------------------------
         $this->datagrid_form = new TForm('datagrid_'.self::$formId);
