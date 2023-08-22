@@ -28,6 +28,10 @@ class MensagemController
     {
         $this->dao = $dao;
     }
+    public function getDatabase()
+    {
+        return $this->database;
+    }    
     //--------------------------------------------------------------------------------
     public function selectById( $id )
     {
@@ -100,13 +104,19 @@ class MensagemController
         return $result;
     }
     //--------------------------------------------------------------------------------
-    public static function getMsgPadrao()
+    public function getById($id)
     {
-        TTransaction::open(self::$database); // open a transaction
-        $object = new Mensagem(1); // instantiates the Active Record            
+        TTransaction::open( $this->getDatabase() ); // open a transaction
+        $object = new Mensagem($id); // instantiates the Active Record            
         TTransaction::close(); // close the transaction 
         return $object;      
-    }    
-
+    }
+    //--------------------------------------------------------------------------------
+    public static function getMsgPadrao()
+    {
+        $controller = new MensagemController();
+        $object = $controller->getById(1);
+        return $object;
+    }
 }
 ?>
