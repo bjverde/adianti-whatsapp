@@ -41,7 +41,11 @@ class ContatoForm extends TPage
         $frm->enableCSRFProtection(); // Protection cross-site request forgery 
         $frm->addHiddenField( self::$primaryKey );   // coluna chave da tabela
         $frm->addTextField('nome', 'Nome',50,true,50);    
-        $frm->addTextField('ddi', 'DDI',4,true,5,'+55');
+        //$frm->addTextField('ddi', 'DDI',4,true,5,'+55');
+        $listPaises = HtmlHelper::getListDdi();
+        $ddi = $frm->addSelectField('ddi', 'DDI',true,$listPaises,true,false,'+55',false,null,null,null,null,null,null,null,null);
+        $ddi->setPlaceHolder('Informe o nome do pais');
+        $ddi->setToolTip(null,'Informe o nome do pais'); 
         $frm->addNumberField('ddd', 'DDD',2,true,0,false,'61');
         $frm->addMaskField('celular', 'Celular',true,'99999-9999',false);
         //$frm->addTextField('celular', 'Celular',50,true,50);
