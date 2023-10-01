@@ -164,6 +164,53 @@ class ContatoFormList extends TPage
         $this->onReload();
     } //END onClear
 
+
+    /**
+     * Register the filter in the session
+     */
+    public function onSearch($param = null)
+    {
+        $data = $this->form->getData();
+        $filters = [];
+
+        TSession::setValue(__CLASS__.'_filter_data', NULL);
+        TSession::setValue(__CLASS__.'_filters', NULL);
+
+        if (isset($data->id) AND ( (is_scalar($data->id) AND $data->id !== '') OR (is_array($data->id) AND (!empty($data->id)) )) )
+        {
+
+            $filters[] = new TFilter('id', '=', $data->id);// create the filter 
+        }
+
+        if (isset($data->agendamento_paciente_id) AND ( (is_scalar($data->agendamento_paciente_id) AND $data->agendamento_paciente_id !== '') OR (is_array($data->agendamento_paciente_id) AND (!empty($data->agendamento_paciente_id)) )) )
+        {
+
+            $filters[] = new TFilter('agendamento_id', 'in', "(SELECT id FROM agendamento WHERE paciente_id = '{$data->agendamento_paciente_id}')");// create the filter 
+        }
+
+        if (isset($data->horario_inicial) AND ( (is_scalar($data->horario_inicial) AND $data->horario_inicial !== '') OR (is_array($data->horario_inicial) AND (!empty($data->horario_inicial)) )) )
+        {
+
+            $filters[] = new TFilter('horario_inicial', '>=', $data->horario_inicial);// create the filter 
+        }
+
+        if (isset($data->horario_final) AND ( (is_scalar($data->horario_final) AND $data->horario_final !== '') OR (is_array($data->horario_final) AND (!empty($data->horario_final)) )) )
+        {
+
+            $filters[] = new TFilter('horario_final', '<=', $data->horario_final);// create the filter 
+        }
+
+        // fill the form with data again
+        $this->form->setData($data);
+
+        // keep the search data in the session
+        TSession::setValue(__CLASS__.'_filter_data', $data);
+        TSession::setValue(__CLASS__.'_filters', $filters);
+
+        $this->onReload(['offset' => 0, 'first_page' => 1]);
+    }
+
+
     //--------------------------------------------------------------------------------
     /**
      * Usado no TFormDinGrid
