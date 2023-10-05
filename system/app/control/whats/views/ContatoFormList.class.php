@@ -176,6 +176,13 @@ class ContatoFormList extends TPage
         TSession::setValue(__CLASS__.'_filter_data', NULL);
         TSession::setValue(__CLASS__.'_filters', NULL);
 
+        $filters = OrmAdiantiHelper::addFilter($filters,'nome','like',$data->nome,null);
+        $filters = OrmAdiantiHelper::addFilter($filters,'ddi' ,'='   ,$data->ddi ,null);
+        $filters = OrmAdiantiHelper::addFilter($filters,'ddd' ,'='   ,$data->ddd ,null);
+        $filters = OrmAdiantiHelper::addFilter($filters,'celular' ,'like'   ,$data->celular ,null);
+
+
+        /*
         if (isset($data->id) AND ( (is_scalar($data->id) AND $data->id !== '') OR (is_array($data->id) AND (!empty($data->id)) )) )
         {
 
@@ -199,6 +206,7 @@ class ContatoFormList extends TPage
 
             $filters[] = new TFilter('horario_final', '<=', $data->horario_final);// create the filter 
         }
+        */
 
         // fill the form with data again
         $this->form->setData($data);
