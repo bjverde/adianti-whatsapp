@@ -62,7 +62,7 @@ class OrmAdiantiHelper
      *
      * @param array  $arrayFilter 01: array com os filtros já incluiso
      * @param string $filde       02: campo que será usado
-     * @param string $conector    03: conectores SQL: =, !=, in, not in, >=, <=, >, <
+     * @param string $conector    03: conectores SQL: like, =, !=, in, not in, >=, <=, >, <
      * @param mixed  $data        04: valor que será testado
      * @param string $sql         05: String Sql para um sub select. 
      * @return array
