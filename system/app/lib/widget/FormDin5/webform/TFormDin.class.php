@@ -533,7 +533,7 @@ class TFormDin
     }
 
    /**
-    * Define os botões de ação no formulario. Pode ser passado uma acao ou um array de ações.
+    * Define os botões de ação no formulario, geralmente POST. Pode ser passado uma acao ou um array de ações.
     * Cada ação será um botão no rodapé ou título do formulário
     *
     * ------------------------------------------------------------------------
