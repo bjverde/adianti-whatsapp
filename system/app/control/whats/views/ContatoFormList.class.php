@@ -165,35 +165,6 @@ class ContatoFormList extends TPage
     } //END onClear
 
 
-    /**
-     * Register the filter in the session
-     */
-    public function onSearch($param = null)
-    {
-        $data = $this->form->getData();
-        $filters = [];
-
-        TSession::setValue(__CLASS__.'_filter_data', NULL);
-        TSession::setValue(__CLASS__.'_filters', NULL);
-
-        $filters = OrmAdiantiHelper::addFilter($filters,'nome','like',$data->nome,null);
-        $filters = OrmAdiantiHelper::addFilter($filters,'ddi' ,'='   ,$data->ddi ,null);
-        $filters = OrmAdiantiHelper::addFilter($filters,'ddd' ,'='   ,$data->ddd ,null);
-        $filters = OrmAdiantiHelper::addFilter($filters,'celular' ,'like'   ,$data->celular ,null);
-
-        FormDinHelper::debug($filters);
-
-        // fill the form with data again
-        $this->form->setData($data);
-
-        // keep the search data in the session
-        TSession::setValue(__CLASS__.'_filter_data', $data);
-        TSession::setValue(__CLASS__.'_filters', $filters);
-
-        $this->onReload(['offset' => 0, 'first_page' => 1]);
-    }
-
-
     //--------------------------------------------------------------------------------
     /**
      * Usado no TFormDinGrid
