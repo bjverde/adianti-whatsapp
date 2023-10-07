@@ -41,7 +41,7 @@ class ContatoFormList extends TPage
         $this->addFilterField('nome', 'like', 'nome'); //campo, operador, campo do form
         $this->addFilterField('ddi', '=', 'ddi'); //campo, operador, campo do form
         $this->addFilterField('ddd', '=', 'ddd'); //campo, operador, campo do form
-        $this->addFilterField('celular', '=', 'celular'); //campo, operador, campo do form      
+        $this->addFilterField('celular', '=', 'celular'); //campo, operador, campo do form
           
         if(!empty($param['target_container'])){
             $this->adianti_target_container = $param['target_container'];
@@ -61,7 +61,7 @@ class ContatoFormList extends TPage
         // O Adianti permite a Internacionalização - A função _t('string') serve
         //para traduzir termos no sistema. Veja ApplicationTranslator escrevendo
         //primeiro em ingles e depois traduzindo
-        $frm->setActionLink( _t('Search'), 'onSearch', null, 'fas:search', '#2168bd');
+        $frm->setAction( _t('Search'), 'onSearch', null, 'fas:search', '#2168bd');
         $frm->setActionLink( _t('Clear'), 'onClear', null, 'fa:eraser', 'red');
         $frm->setAction( _t('Register'), ['ContatoForm','onReload'], null, 'fa:plus-square', 'green' );
 
@@ -171,6 +171,8 @@ class ContatoFormList extends TPage
     public function onSearch($param = null)
     {
         $data = $this->form->getData();
+        FormDinHelper::debug($param);
+        FormDinHelper::debug($data);
         $filters = [];
 
         TSession::setValue(__CLASS__.'_filter_data', NULL);
@@ -180,6 +182,8 @@ class ContatoFormList extends TPage
         $filters = OrmAdiantiHelper::addFilter($filters,'ddi' ,'='   ,$data->ddi ,null);
         $filters = OrmAdiantiHelper::addFilter($filters,'ddd' ,'='   ,$data->ddd ,null);
         $filters = OrmAdiantiHelper::addFilter($filters,'celular' ,'like'   ,$data->celular ,null);
+
+        FormDinHelper::debug($filters);
 
 
         /*
